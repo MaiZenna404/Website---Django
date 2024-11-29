@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import DemandeCongeForm
+from .forms import *
+from .models import *
 
 # Create your views here.
 
@@ -28,3 +29,10 @@ def employee_dashboard(request):
         "form": form
     }
     return render(request, 'employee_dashboard.html', context=context)
+
+def view_employees(request):
+    employees = Employe.objects.all()
+    context = {
+        "total_employees": len(employees)
+    }
+    return render(request, 'view_employees.html', context=context)

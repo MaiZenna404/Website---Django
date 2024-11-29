@@ -22,6 +22,7 @@ class Employe(models.Model):
     adresse = models.TextField()
     telephone = models.CharField(max_length=15)
     poste = models.CharField(max_length=50)
+    photo_profil = models.CharField(max_length=1000, default="https://www.freepik.com/premium-vector/default-profile-picture-ui-element-template_44646706.htm")
     
     def __str__(self):
         return self.nom + " " + self.prenom

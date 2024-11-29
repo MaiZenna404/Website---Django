@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Admin Task Manager Dashboard</h1>
+     <h3> Bienvenue {{ admin }} !</h3>
+
+     <nav> 
+        <ul>
+            <li><a href="">Dashboard</a></li>
+            <li><a href="">Create Task</a></li>
+            <li><a href="">View Tasks</a></li>
+            <li><a href="">Logout</a></li>
+        </ul>
+     </nav>
+     
+     <div>
+        {% if employees == 0 %}
+            <h4>La liste des employés est vide</h4>
+        {% else %}
+            <h4>Voici la liste des employés : </h4>
+            {% for employee in employees %}
+                <div>
+                    <h3>{{ employee.first_name }} {{ employee.last_name }}</h3>
+                    <p>{{ employee.email }}</p>
+                    <p>{{ employee.department }}</p>
+                    <p>{{ employee.position }}</p>
+                    <p>{{ employee.manager }}</p>
+                    <p>{{ employee.start_date }}</p>
+                    <p>{{ employee.end_date }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <footer>
+            <p>Task Manager &copy; 2024</p>
+        </footer>
+</body>
+</html>
