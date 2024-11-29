@@ -27,10 +27,20 @@ class Employe(models.Model):
     def __str__(self):
         return self.nom + " " + self.prenom
     
-    
-    class CreateTask(models.Model):
-        task = models.CharField(max_length=10000)
-        date_created = models.DateTimeField(auto_now_add=True)
+
+class CreateTask(models.Model):
+    task_name = models.CharField(max_length=800)
+    task_description = models.CharField(max_length=10000)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.task_name
         
-        def __str__(self):
-            return self.task
+class ViewTask(models.Model):
+    task_id = models.ForeignKey(CreateTask, on_delete=models.CASCADE)
+    task_name = models.CharField(max_length=800)
+    task_description = models.CharField(max_length=10000)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.task_name
