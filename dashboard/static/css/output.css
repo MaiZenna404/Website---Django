@@ -629,6 +629,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-32 {
+  margin-top: 8rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -811,6 +815,14 @@ video {
   text-align: center;
 }
 
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Courier New, monospace;
+}
+
+.font-sans {
+  font-family: ui-sans-serif, system-ui, Helvetica, Arial, sans-serif;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -880,9 +892,18 @@ video {
   transition-duration: 300ms;
 }
 
+.hover\:rounded-full:hover {
+  border-radius: 9999px;
+}
+
 .hover\:bg-beige-light:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 245 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-gray-dark:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(39 52 68 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:underline:hover {

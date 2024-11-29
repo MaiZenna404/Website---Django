@@ -7,27 +7,27 @@
     <title>View Employees</title>
     <link href="{% static 'css/output.css' %}" rel="stylesheet">
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white font-sans">
     <nav class="w-full bg-gray-800 p-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
             <div class="text-3xl font-bold">
                 <a href="{% url 'admin_page' %}" class="text-white">Admin Task Manager Dashboard</a>
             </div>
             <div class="hidden md:flex space-x-4">
-                <a href="{% url 'admin_page' %}" class="text-white hover:text-gray-300">Dashboard</a>
-                <a href="{% url 'view_tasks' %}" class="text-white hover:text-gray-300">View Tasks</a>
-                <a href="{% url 'create_task' %}" class="text-white hover:text-gray-300">Create Tasks</a>
-                <a href="{% url 'liste_employes' %}" class="text-white hover:text-gray-300">View All Employees</a>
-                <a href="{% url 'home' %}" class="text-white hover:text-gray-300">Logout</a>
+                <a href="{% url 'admin_page' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">Dashboard</a>
+                <a href="{% url 'view_tasks' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">View Tasks</a>
+                <a href="{% url 'create_task' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">Create Tasks</a>
+                <a href="{% url 'liste_employes' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">View All Employees</a>
+                <a href="{% url 'home' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">Logout</a>
             </div>
     </nav>
     
-    <div class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg mt-8">
+    <div class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg mt-8 font-sans">
         {% if employees %}
             <h4 class="text-2xl font-bold mb-4 text-gray-800">Voici la liste des employés :</h4>
             <ul class="space-y-4">
                 {% for employee in employees %}
-                <li class="bg-gray-100 p-4 rounded-lg shadow flex items-center space-x-4">
+                <li class="bg-gray-100 p-4 rounded-lg shadow flex items-center space-x-4 justify-center">
                     <div class="flex justify-end">
                     <img src="{{ employee.photo_profil }}" alt="photo de l'employé" class="w-24 h-24 rounded-full">
                     </div>
@@ -55,5 +55,9 @@
         </div>
         {% endif %}
     </div>
+
+    <footer class="mt-32 font-sans">
+        <p>Task Manager &copy; 2024</p>
+    </footer>
 </body>
 </html>

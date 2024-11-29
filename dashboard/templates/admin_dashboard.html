@@ -7,21 +7,28 @@
     <title>Admin Task Manager Dashboard</title>
     <link href="{% static 'css/output.css' %}?v={{ timestamp }}" rel="stylesheet">
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-    <nav class="w-full bg-gray-800 p-4">
-        <h1 class="text-3xl font-bold text-center">Admin Task Manager Dashboard</h1>
-        <h3 class="text-center mt-2">Bienvenue {{ admin }} !</h3>
-        <ul class="flex justify-center space-x-4 mt-4">
-            <li><a href="{% url 'admin_page' %}" class="text-white hover:underline">Dashboard</a></li>
-            <li><a href="{% url 'view_tasks' %}" class="text-white hover:underline">View Tasks</a></li>
-            <li><a href="{% url 'create_task' %}" class="text-white hover:underline">Create Tasks</a></li>
-            <li><a href="{% url 'liste_employes' %}" class="text-white hover:underline">View All Employees</a></li>
-            <li><a href="{% url 'home' %}" class="text-white hover:underline">Logout</a></li>
-        </ul>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white font-sans">
+    <nav class="w-full bg-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-3xl font-bold">
+                <a href="{% url 'admin_page' %}" class="text-white">Admin Task Manager Dashboard</a>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="{% url 'admin_page' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">Dashboard</a>
+                <a href="{% url 'view_tasks' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">View Tasks</a>
+                <a href="{% url 'create_task' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">Create Tasks</a>
+                <a href="{% url 'liste_employes' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">View All Employees</a>
+                <a href="{% url 'home' %}" class="text-white hover:bg-beige-light hover:bg-gray-700 hover:rounded-full px-6 py-3">Logout</a>
+            </div>
     </nav>
 
-    <div class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg mt-8">
+    <div class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg mt-8 font-sans">
         <h4 class="text-2xl font-bold mb-4 text-gray-800">Admin Dashboard Content</h4>
+        <p class="text-gray-700">Welcome, Admin! You have access to all the features of the Task Manager.</p>
     </div>
+
+    <footer class="mt-32 font-sans">
+        <p>Task Manager &copy; 2024</p>
+    </footer>
 </body>
 </html>
