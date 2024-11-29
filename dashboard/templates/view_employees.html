@@ -12,30 +12,35 @@
 
      <nav> 
         <ul>
-            <li><a href="">Dashboard</a></li>
+            <li><a href={% url 'admin_page' %}>Dashboard</a></li>
             <li><a href="">Create Task</a></li>
             <li><a href="">View Tasks</a></li>
-            <li><a href="">Logout</a></li>
+            <li><a href={% url "home" %}>Logout</a></li>
         </ul>
      </nav>
      
      <div>
-        {% if employees == 0 %}
-            <h4>La liste des employés est vide</h4>
-        {% else %}
-            <h4>Voici la liste des employés : </h4>
-            {% for employee in employees %}
+        {% if employees %}
+            <h4>Voici la liste des employés :</h4>
+            <ul>
+                {% for employee in employees %}
                 <div>
-                    <h3>{{ employee.first_name }} {{ employee.last_name }}</h3>
+                    <img src="{{ employee.photo_profil}}" alt="photo de l'employé" width="150" height="150">
+                    <p>{{ employee.nom }} {{ employee.prenom }}</p>
                     <p>{{ employee.email }}</p>
-                    <p>{{ employee.department }}</p>
-                    <p>{{ employee.position }}</p>
-                    <p>{{ employee.manager }}</p>
-                    <p>{{ employee.start_date }}</p>
-                    <p>{{ employee.end_date }}</p>
-            {% endfor %}
-        {% endif %}
+                    <p>{{ employee.poste }}test</p>
+                    <p>{{ employee.date_embauche}}</p>
+                    <p>{{ employee.adresse }}</p>
+                    <p>{{ employee.date_naissance }}</p>
+                    <p>{{ employee.telephone}}</p>
 
+                {% endfor %}
+                </div>
+            </ul>
+        {% else %}
+            <h4>La liste des employés est vide</h4>
+        {% endif %}
+    </div>
         <footer>
             <p>Task Manager &copy; 2024</p>
         </footer>

@@ -33,6 +33,7 @@ def employee_dashboard(request):
 def view_employees(request):
     employees = Employe.objects.all()
     context = {
+        'employees': employees,
         "total_employees": len(employees)
     }
     return render(request, 'view_employees.html', context=context)
