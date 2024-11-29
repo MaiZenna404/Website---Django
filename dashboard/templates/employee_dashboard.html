@@ -7,13 +7,28 @@
     <title>Employee Dashboard</title>
 </head>
 <body>
+    <nav>
     <h1>Task Manager - Employee Portal</h1>
-    
-    <h3>Quel type de congé souhaitez-vous demander à votre manager ?</h3>
+    </nav>
 
     <div>
-        <a href="admin_dashboard.html">Administrator</a>
-        <a href="employee_dashboard.html">Employee</a>
+    <h3>Quel type de congé souhaitez-vous demander à votre manager ?</h3>
+    </div>
+
+    <div>
+        <form method= 'post'>
+            {% csrf_token %}
+
+            {{ form }}
+
+            <br>
+        <button type="submit">Submit</button>
+        
+        </form>
+    </div>
+
+    <div>
+        <a href= {% url 'home' %}>Revenir à la homepage</a>
     </div>
 
     <footer>

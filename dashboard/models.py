@@ -4,7 +4,7 @@ from django.db import models
 class DemandeConge(models.Model):
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
-    type_congee = models.CharField(max_length=100)
+    type_conge = models.CharField(max_length=100)
     date_debut = models.DateField()
     date_fin = models.DateField()
     motif = models.TextField()
