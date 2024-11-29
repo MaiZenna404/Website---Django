@@ -6,12 +6,26 @@ from .models import *
 
 # Create your views here.
 
+
+def my_view(request):
+    response = render(request, 'my_template.html')
+    # Désactivation du cache pour éviter les 304
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
+
 def admin_dashboard(request):
     context = {
         "admin" : "Administrator",
         'timestamp': now().timestamp()
         }
-    return render(request, 'admin_dashboard.html', context=context)
+    response = render(request, 'admin_dashboard.html', context)
+    # Disable caching to avoid 304 responses
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
 
 def home(request):
 
@@ -30,7 +44,12 @@ def employee_dashboard(request):
         "employe": "Employe",
         "form": form
     }
-    return render(request, 'employee_dashboard.html', context=context)
+    response = render(request, 'employee_dashboard.html', context)
+    # Disable caching to avoid 304 responses
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
 
 def view_employees(request):
     employees = Employe.objects.all()
@@ -39,7 +58,12 @@ def view_employees(request):
         'admin': "Administrator",
         "total_employees": len(employees)
     }
-    return render(request, 'view_employees.html', context=context)
+    response = render(request, 'view_employees.html', context)
+    # Disable caching to avoid 304 responses
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
 
 def create_task(request):
     if request.method == 'POST':
@@ -52,7 +76,12 @@ def create_task(request):
         'admin': "Administrator",
         "form": form
     }
-    return render(request, 'admin_create_task.html', context=context)
+    response = render(request, 'admin_create_task.html', context)
+    # Disable caching to avoid 304 responses
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
 
 def view_tasks(request):
     tasks = ViewTask.objects.all()
@@ -61,4 +90,10 @@ def view_tasks(request):
         'admin': "Administrator",
         "total_tasks": len(tasks)
     }
-    return render(request, 'admin_view_task.html', context=context)
+    response = render(request, 'admin_view_task.html', context)
+    # Disable caching to avoid 304 responses
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
+

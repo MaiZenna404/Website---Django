@@ -13,6 +13,7 @@ module.exports = {
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
       'bordeaux': '#7d2732',
+      'bg-gradient': '#a7cdd9',
     },
     fontFamily: {
       sans: ['ui-sans-serif', 'system-ui', 'Helvetica', 'Arial', 'sans-serif'],
