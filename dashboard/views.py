@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.timezone import now
 from django.http import HttpResponse
 from .forms import *
 from .models import *
@@ -7,7 +8,8 @@ from .models import *
 
 def admin_dashboard(request):
     context = {
-        "admin" : "Administrator"
+        "admin" : "Administrator",
+        'timestamp': now().timestamp()
         }
     return render(request, 'admin_dashboard.html', context=context)
 

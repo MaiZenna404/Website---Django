@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="{% static '../static/css/output.css' %}" rel="stylesheet">
+    <link href="{% static '../static/css/output.css' %}?v={{ timestamp }}" rel="stylesheet">
 </head>
 <body>
-    <h1>Admin Task Manager Dashboard</h1>
+    <h1 class="text-red-700">Admin Task Manager Dashboard</h1>
      <h3> Bienvenue {{ admin }} !</h3>
 
      <nav class="flex mb-4"> 
-        <ul class="w-full bg-gray-600 h-12">
+        <ul class="flex flex-row p-9 w-full bg-red-300 h-12">
             <li><a href={% url 'admin_page'%}>Dashboard</a></li>
             <li><a href={% url 'view_tasks'%}>View Tasks</a></li>
             <li><a href={% url 'create_task'%}>Create Tasks</a></li>
