@@ -4,45 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="{% static '../static/css/output.css' %}" rel="stylesheet">
+    <title>Admin Task Manager Dashboard</title>
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
 </head>
-<body>
-    <h1>Admin Task Manager Dashboard</h1>
-     <h3> Bienvenue {{ admin }} !</h3>
-
-     <nav> 
-        <ul>
-            <li><a href={% url 'admin_page'%}>Dashboard</a></li>
-            <li><a href={% url 'create_task'%}>Create Tasks</a></li>
-            <li><a href={% url "liste_employes" %}>View All Employees</a></li>
-            <li><a href={% url "home" %}>Logout</a></li>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+    <nav class="w-full bg-gray-800 p-4">
+        <h1 class="text-3xl font-bold text-center">Admin Task Manager Dashboard</h1>
+        <h3 class="text-center mt-2">Bienvenue {{ admin }} !</h3>
+        <ul class="flex justify-center space-x-4 mt-4">
+            <li><a href="{% url 'admin_page' %}" class="text-white hover:underline">Dashboard</a></li>
+            <li><a href="{% url 'create_task' %}" class="text-white hover:underline">Create Tasks</a></li>
+            <li><a href="{% url 'liste_employes' %}" class="text-white hover:underline">View All Employees</a></li>
+            <li><a href="{% url 'home' %}" class="text-white hover:underline">Logout</a></li>
         </ul>
-     </nav>
+    </nav>
 
-     <div>
+    <div class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg mt-8">
         {% if tasks %}
-            <h4>Voici la liste des tâches à effectuer :</h4>
-            <ul>
+            <h4 class="text-2xl font-bold mb-4 text-gray-800">Voici la liste des tâches à effectuer :</h4>
+            <ul class="space-y-4">
                 {% for task in tasks %}
-                <div>
-                    <p>{{ task.task_name }}</p>
-                    <p>{{ task.task_description }}</p>
-                    <p>{{ task.date_created }}</p>
-
-
+                <li class="bg-gray-100 p-4 rounded-lg shadow">
+                    <p class="text-lg font-semibold">{{ task.task_name }}</p>
+                    <p class="text-gray-700">{{ task.task_description }}</p>
+                    <p class="text-gray-500 text-sm">{{ task.date_created }}</p>
+                </li>
                 {% endfor %}
-                </div>
             </ul>
         {% else %}
-            <h4>La liste des tâches est vide !</h4>
+            <p class="text-gray-700">Aucune tâche à afficher.</p>
         {% endif %}
     </div>
-        <footer>
-            <p>Task Manager &copy; 2024</p>
-        </footer>
-
-
-
 </body>
 </html>

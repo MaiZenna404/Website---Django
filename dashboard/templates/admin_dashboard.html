@@ -4,24 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="{% static '../static/css/output.css' %}?v={{ timestamp }}" rel="stylesheet">
+    <title>Admin Task Manager Dashboard</title>
+    <link href="{% static 'css/output.css' %}?v={{ timestamp }}" rel="stylesheet">
 </head>
-<body>
-    <h1 class="text-red-700">Admin Task Manager Dashboard</h1>
-     <h3> Bienvenue {{ admin }} !</h3>
-
-     <nav class="flex mb-4 bg-bordeaux"> 
-        <ul class="flex flex-row p-9 w-full bg-red-300 h-12">
-            <li><a href={% url 'admin_page'%}>Dashboard</a></li>
-            <li><a href={% url 'view_tasks'%}>View Tasks</a></li>
-            <li><a href={% url 'create_task'%}>Create Tasks</a></li>
-            <li><a href={% url "liste_employes" %}>View All Employees</a></li>
-            <li><a href={% url "home" %}>Logout</a></li>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+    <nav class="w-full bg-gray-800 p-4">
+        <h1 class="text-3xl font-bold text-center">Admin Task Manager Dashboard</h1>
+        <h3 class="text-center mt-2">Bienvenue {{ admin }} !</h3>
+        <ul class="flex justify-center space-x-4 mt-4">
+            <li><a href="{% url 'admin_page' %}" class="text-white hover:underline">Dashboard</a></li>
+            <li><a href="{% url 'view_tasks' %}" class="text-white hover:underline">View Tasks</a></li>
+            <li><a href="{% url 'create_task' %}" class="text-white hover:underline">Create Tasks</a></li>
+            <li><a href="{% url 'liste_employes' %}" class="text-white hover:underline">View All Employees</a></li>
+            <li><a href="{% url 'home' %}" class="text-white hover:underline">Logout</a></li>
         </ul>
-     </nav>
+    </nav>
 
-
-
+    <div class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg mt-8">
+        <h4 class="text-2xl font-bold mb-4 text-gray-800">Admin Dashboard Content</h4>
+        <!-- Add your dashboard content here -->
+    </div>
 </body>
 </html>
