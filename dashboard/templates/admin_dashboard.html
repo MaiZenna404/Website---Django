@@ -27,6 +27,21 @@
         <p class="text-gray-700">Welcome, Admin! You have access to all the features of the Task Manager.</p>
     </div>
 
+    <div class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg mt-8 font-sans">
+        {% if demandes|length == 0 %}
+            <p>Il n'y a aucune demande de congé en attente.</p>
+        {% else %}
+            {% for demande in demandes %}
+                <div class="bg-gray-100 p-4 rounded-lg shadow mb-4">
+                    <p class="text-lg font-semibold">{{ demande.nom }} {{ demande.prenom }}</p>
+                    <p class="text-gray-700">{{ demande.date_debut }} - {{ demande.date_fin }}</p>
+                    <p class="text-gray-500 text-sm">{{ demande.motif }}</p>
+                    <p class="text-gray-500 text-sm">{{ demande.date_demande }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
     <footer class="mt-32 font-sans">
         <p>Task Manager &copy; 2024</p>
     </footer>

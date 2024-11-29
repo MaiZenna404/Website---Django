@@ -97,3 +97,16 @@ def view_tasks(request):
     response['Expires'] = '0'
     return response
 
+def show_demande_conges(request):
+    demandes = DemandeConge.objects.all()
+    context = {
+        'demande': demandes,
+        'admin': "Administrator",
+        "total_demande": len(demandes)
+    }
+    response = render(request, 'admin_dashboard.html', context)
+    # Disable caching to avoid 304 responses
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
