@@ -4,46 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="{% static '../static/css/output.css' %}" rel="stylesheet">
+    <title>View Employees</title>
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
 </head>
-<body>
-    <h1>Admin Task Manager Dashboard</h1>
-     <h3> Bienvenue {{ admin }} !</h3>
-
-     <nav> 
-        <ul>
-            <li><a href={% url 'admin_page' %}>Dashboard</a></li>
-            <li><a href="">Create Task</a></li>
-            <li><a href="">View Tasks</a></li>
-            <li><a href={% url "home" %}>Logout</a></li>
-        </ul>
-     </nav>
-     
-     <div>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+    <nav class="w-full bg-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-3xl font-bold">
+                <a href="{% url 'admin_page' %}" class="text-white">Admin Task Manager Dashboard</a>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="{% url 'admin_page' %}" class="text-white hover:text-gray-300">Dashboard</a>
+                <a href="{% url 'view_tasks' %}" class="text-white hover:text-gray-300">View Tasks</a>
+                <a href="{% url 'create_task' %}" class="text-white hover:text-gray-300">Create Tasks</a>
+                <a href="{% url 'liste_employes' %}" class="text-white hover:text-gray-300">View All Employees</a>
+                <a href="{% url 'home' %}" class="text-white hover:text-gray-300">Logout</a>
+            </div>
+    </nav>
+    
+    <div class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg mt-8">
         {% if employees %}
-            <h4>Voici la liste des employés :</h4>
-            <ul>
+            <h4 class="text-2xl font-bold mb-4 text-gray-800">Voici la liste des employés :</h4>
+            <ul class="space-y-4">
                 {% for employee in employees %}
-                <div>
-                    <img src="{{ employee.photo_profil}}" alt="photo de l'employé" width="150" height="150">
-                    <p>{{ employee.nom }} {{ employee.prenom }}</p>
-                    <p>{{ employee.email }}</p>
-                    <p>{{ employee.poste }}test</p>
-                    <p>{{ employee.date_embauche}}</p>
-                    <p>{{ employee.adresse }}</p>
-                    <p>{{ employee.date_naissance }}</p>
-                    <p>{{ employee.telephone}}</p>
-
+                <li class="bg-gray-100 p-4 rounded-lg shadow flex items-center space-x-4">
+                    <div class="flex justify-end">
+                    <img src="{{ employee.photo_profil }}" alt="photo de l'employé" class="w-24 h-24 rounded-full">
+                    </div>
+                    <section class="flex-wrap justify-center">
+                        <p class="text-lg font-semibold">{{ employee.nom }} {{ employee.prenom }}</p>
+                        <br/>
+                        <p class="text-gray-700">Email :{{ employee.email }}</p>
+                        <br/>
+                        <p class="text-gray-700">Poste : {{ employee.poste }}</p>
+                        <br/>
+                        <p class="text-gray-500 text-sm">Date d'embauche: {{ employee.date_embauche }}</p>
+                        <br />
+                        <p class="text-gray-500 text-sm">Adresse: {{ employee.adresse }}</p>
+                        <br/>
+                        <p class="text-gray-500 text-sm">Date de naissance: {{ employee.date_naissance }}</p>
+                        <br/>
+                        <p class="text-gray-500 text-sm">Téléphone: {{ employee.telephone }}</p>
+                    </section>
+                </li>
                 {% endfor %}
-                </div>
             </ul>
         {% else %}
-            <h4>La liste des employés est vide</h4>
+        <div class="flex justify-center">
+            <p class="text-gray-700 text-center">Aucun employé à afficher.</p>
+        </div>
         {% endif %}
     </div>
-        <footer>
-            <p>Task Manager &copy; 2024</p>
-        </footer>
 </body>
 </html>
