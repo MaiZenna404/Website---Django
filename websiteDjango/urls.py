@@ -23,5 +23,7 @@ urlpatterns = [
     path("employee_dashboard/", employee_dashboard, name="employee_page"),
     path("admin_dashboard/", admin_dashboard, name="admin_page"),
     path("admin_dashboard/view_employees/", view_employees, name="liste_employes"),
+    path("admin_dashboard/create_task/", create_task, name="create_task"),
+    path("admin_dashboard/view_tasks/", view_tasks, name="view_tasks"),
     path("admin/", admin.site.urls),
 ]

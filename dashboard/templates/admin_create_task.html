@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Admin Task Manager Dashboard</h1>
+     <h3> Bienvenue {{ admin }} !</h3>
+
+     <nav> 
+        <ul>
+            <li><a href={% url 'admin_page'%}>Dashboard</a></li>
+            <li><a href={% url 'view_task_list'%}>View Tasks</a></li>
+            <li><a href={% url "liste_employes" %}>View All Employees</a></li>
+            <li><a href={% url "home" %}>Logout</a></li>
+        </ul>
+     </nav>
+
+     <div>
+        <form method= 'post'>
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <br>
+        <button type="submit">Créer la tâche à effectuer</button>
+        </form>
+
+        <div>
+            <a href= {% url 'admin_page' %}>Revenir à la homepage</a>
+        </div>
+    
+        <footer>
+            <p>Task Manager &copy; 2024</p>
+        </footer>
+
+</body>
+</html>

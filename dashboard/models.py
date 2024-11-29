@@ -7,7 +7,18 @@ class DemandeConge(models.Model):
     type_conge = models.CharField(max_length=100)
     date_debut = models.DateField()
     date_fin = models.DateField()
-    motif = models.TextField()
+    motif = models.CharField(
+        max_length=100,
+            choices = [
+                ('Arrêt Maladie', 'Arrêt Maladie'),
+                ('Congé sans solde', 'Congé sans solde'),
+                ('Congé de maternité', 'Congé de maternité'),
+                ('Congé de paternité', 'Congé de paternité'),
+                ('Formation', 'Formation'),
+                ('Motif Personnel', 'Motif Personnel'),
+                ],
+                   default='Autre Raison')
+
     date_demande = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

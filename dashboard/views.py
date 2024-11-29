@@ -34,6 +34,29 @@ def view_employees(request):
     employees = Employe.objects.all()
     context = {
         'employees': employees,
+        'admin': "Administrator",
         "total_employees": len(employees)
     }
     return render(request, 'view_employees.html', context=context)
+
+def create_task(request):
+    if request.method == 'POST':
+        form = CreateTaskForm(request.POST)
+        if form.is_valid():
+            return HttpResponse("Votre tâche a bien été enregistrée !")
+    else:
+        form = CreateTaskForm()
+    context = {
+        'admin': "Administrator",
+        "form": form
+    }
+    return render(request, 'admin_create_task.html', context=context)
+
+def view_tasks(request):
+    tasks = ViewTask.objects.all()
+    context = {
+        'tasks': tasks,
+        'admin': "Administrator",
+        "total_tasks": len(tasks)
+    }
+    return render(request, 'admin_view_task.html', context=context)
